@@ -1,0 +1,66 @@
+/*head start*/
+.head_main{
+    background-color:rgb(0, 104, 183);
+    overflow: hidden;
+    background-image: url("../image/logo_bg.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.head_main img{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+/*head end*/
+
+/*main start*/
+.main_data{
+    border-radius: 10px;
+    border-width: 15px;
+    border-color: lightgray;
+    margin-top: 15px;
+}
+.main_data li{
+    border-bottom-style: solid;
+    border-width: 2px;
+    border-color: rgb(0, 108, 178);
+}
+th{
+    border-color: rgb(0, 108, 178);
+    border-width: 2px;
+    border-style: solid;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center !important;
+    background-color: lightskyblue;
+}
+td{
+    border-color: rgb(0, 108, 178);
+    border-width: 2px;
+    border-style: solid;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    text-align: center;
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}
+.main_data_head{
+    cursor: pointer;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+.main_data_head p{
+    margin-bottom: 5px;
+}
+.main_data_head span{
+    font-size: 120%;
+    font-weight: bold;
+}
+/*main end*/
+
+/*tail start*/
+/*tail end*/

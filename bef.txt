@@ -1,0 +1,39 @@
+<!-- <div id="scoredata" class="col-xs-12 col-lg-12 main_data">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:10%;">学年学期</th>
+                        <th style="width:10%;">课程代码</th style="width: ;">
+                        <th style="width:10%;">课程序号</th style="width: ;">
+                        <th style="width:20%;">课程名称</th style="width: ;">
+                        <th style="width:14%;">课程类别</th style="width: ;">
+                        <th style="width:5.14%;">学分</th style="width: ;">
+                        <th style="width:5.14%;">期末成绩</th style="width: ;">
+                        <th style="width:5.14%;">平时成绩</th style="width: ;">
+                        <th style="width:5.14%;">总评成绩</th style="width: ;">
+                        <th style="width:5.14%;">实验成绩</th style="width: ;">
+                        <th style="width:5.14%;">最终成绩</th>
+                        <th style="width:5.14%;">绩点</th style="width: ;">
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="score in scores">
+                        <td>{{score.date}}</td>
+                        <td>{{score.code}}</td>
+                        <td>{{score.id}}</td>
+                        <td>{{score.name}}</td>
+                        <td>{{score.type}}</td>
+                        <td>{{score.credit}}</td>
+                        <td>{{score.testScore}}</td>
+                        <td>{{score.usualScore}}</td>
+                        <td>{{score.overallScore}}</td>
+                        <td>{{score.experimentScore}}</td>
+                        <td>{{score.finalScore}}</td>
+                        <td>{{score.GPA}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        -->
+        

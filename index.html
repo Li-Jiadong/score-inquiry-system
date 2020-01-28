@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="image/favicon.ico">
+    <title>成绩查询</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <!--head start-->
+    <div class="col-xs-12 col-lg-12 head_main">
+        <div  class="col-xs-12 col-lg-4">
+            <img src="./image/logo.png" alt="">
+        </div>
+        
+    </div>
+    <!--head end-->
+    <!--main start-->
+    <div class="container">
+        <div id="scoredata" class="col-xs-12 col-sm-12 col-md-12 main_data">
+            <li></li>
+            <li v-for="score in scores">
+                <div class="main_data_head" onclick="showdata(this)">
+                    <span>{{score.name}}</span>
+                    <p>学分:{{score.credit}}&nbsp;成绩:{{score.finalScore}}&nbsp;绩点:{{score.GPA}}</p>
+                </div>
+                <div style="display: none;">
+                    <p>学年学期:{{score.date}}</p>
+                    <p>课程代码:{{score.code}}</p>
+                    <p>课程序号:{{score.id}}</p>
+                    <p>课程类别:{{score.type}}</p>
+                    <p>期末成绩:{{score.testScore}}</p>
+                    <p>平时成绩:{{score.usualScore}}</p>
+                    <p>总评成绩:{{score.overallScore}}</p>
+                    <p>实验成绩:{{score.experimentScore}}</p>
+                    <p>最终成绩:{{score.finalScore}}</p>
+                </div>
+            </li>
+        </div>
+    </div>
+    <!--main end-->
+    <!--tail start-->
+    <!--tail end-->
+    <script>
+        var a='hello world';
+        var scoredata=new Vue({
+            el: '#scoredata',
+            data:{
+                hhh:'adaf',
+                scores:[
+                    
+                ]
+            }
+        });
+    </script>
+    <script src="js/control.js"></script>
+</body>
+</html>

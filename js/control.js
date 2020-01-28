@@ -1,14 +1,16 @@
 var timer;
 function showdata(item){
-    //document.getElementById('').style.display
+    //document.getElementById('').style.backgroundImage=
     var list=item.nextElementSibling;
     //alert(list.style.display);
     if(list.style.height=='0px'){
         clearInterval(timer);
         timer=setInterval(function(){listmove(list,30,260);},7);
+        item.style.backgroundImage='url(./image/down.png)';
     }else{
         clearInterval(timer);
         timer=setInterval(function(){listmove(list,-30,0);},7);
+        item.style.backgroundImage='url(./image/back.png)';
     }
 }
 function listmove(item,step,end){

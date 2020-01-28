@@ -5,6 +5,7 @@
     background-image: url("../image/logo_bg.png");
     background-repeat: no-repeat;
     background-position: right;
+    margin-bottom: 15px;
 }
 .head_main img{
     margin-top: 15px;
@@ -18,7 +19,6 @@
     border-radius: 10px;
     border-width: 15px;
     border-color: lightgray;
-    margin-top: 15px;
 }
 .main_data li{
     border-bottom-style: solid;

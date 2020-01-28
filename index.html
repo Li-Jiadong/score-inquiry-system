@@ -23,14 +23,34 @@
     <!--head end-->
     <!--main start-->
     <div class="container">
+        <form role="form">
+            <div class="form-group">
+                <label for="name">学年</label>
+                <select class="form-control">
+                    <option value="all">所有成绩</option>
+                    <option value="1">2019-2020</option>
+                    <option value="2">2018-2019</option>
+                    <option value="3">2017-2018</option>
+                    <option value="4">2016-2017</option>
+                    <option value="5">2015-2016</option>
+                    <option value="6">2014-2015</option>
+                    <option value="7">2013-2014</option>
+                </select>
+                <label for="name">学期</label>
+                <select class="form-control">
+                    <option value="1">第一学期</option>
+                    <option value="2">第二学期</option>
+                </select>
+            </div>
+        </form>
         <div id="scoredata" class="col-xs-12 col-sm-12 col-md-12 main_data">
             <li></li>
             <li v-for="score in scores">
                 <div class="main_data_head" onclick="showdata(this)">
                     <span>{{score.name}}</span>
-                    <p>学分:{{score.credit}}&nbsp;成绩:{{score.finalScore}}&nbsp;绩点:{{score.GPA}}</p>
+                    <p>学分:{{score.credit}}&nbsp;&nbsp;成绩:{{score.finalScore}}&nbsp;&nbsp;绩点:{{score.GPA}}</p>
                 </div>
-                <div style="display: none;">
+                <div style="height: 0px;overflow: hidden;">
                     <p>学年学期:{{score.date}}</p>
                     <p>课程代码:{{score.code}}</p>
                     <p>课程序号:{{score.id}}</p>

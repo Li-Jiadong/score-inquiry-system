@@ -1,4 +1,5 @@
 var timer;
+var datajson;
 function showdata(item){
     //document.getElementById('').style.backgroundImage=
     var list=item.nextElementSibling;
@@ -23,47 +24,38 @@ function listmove(item,step,end){
             item.style.height='auto';
     }
 }
-scoredata.scores=[
-    {
-        date:'2019-2020 1',
-        code:'TX870601',
-        id:'TX870601.02',
-        name:'大学生生涯规划与就业指导',
-        type:'通识选修课程创新创业与就业指导类',
-        credit:'2',
-        testScore:'95',
-        usualScore:'98',
-        overallScore:'96',
-        experimentScore:'',
-        finalScore:'96',
-        GPA:'4.6'
-    },
-    {
-        date:'2019-2020 1',
-        code:'TS6405010',	
-        id:'S6405010.A3',
-        name:'军训',
-        type:'实践环节',
-        credit:'2',
-        testScore:'优秀',
-        usualScore:'',
-        overallScore:'优秀',
-        experimentScore:'',
-        finalScore:'优秀',
-        GPA:'4'
-    },
-    {										
-        date:'2019-2020 1',
-        code:'X2403010',
-        id:'X2403010.01',
-        name:'C/C++程序设计',
-        type:'学科基础课程',
-        credit:'4',
-        testScore:'93',
-        usualScore:'100',
-        overallScore:'95',
-        experimentScore:'',
-        finalScore:'95',
-        GPA:'4.5'
+//--------------------------------------------
+var xmlhttp=new XMLHttpRequest();
+if(window.XMLHttpRequest){
+    xmlhttp=new XMLHttpRequest();
+}else{
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function(){
+    if(xmlhttp.readyState==4&&xmlhttp.status==200){
+        datajson=JSON.parse(xmlhttp.responseText);
+        // alert(datajson.year[0].term[0].scores[0].name);
+        // document.getElementById('test').innerHTML=xmlhttp.responseText;
+        scoredata.scores=datajson.year[0].term[0].scores;
     }
-];
+}
+xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',true);
+xmlhttp.send();
+
+function changeYears(v){
+    if(v==-1) {
+        document.getElementById('term').style.display='none';
+        scoredata.scores=datajson.year[0].term[0].scores;
+        for(var i=1;i<7;++i){
+            for(var j=1;j<2;++j){
+                scoredata.scores=scoredata.scores.concat(datajson.year[i].term[j].scores);
+            }
+        }
+    }else{
+        document.getElementById('term').style.display='block';
+        scoredata.scores=datajson.year[Number(v)].term[Number(inputs.terms)].scores;
+    }
+}
+function changeTerms(v){
+    scoredata.scores=datajson.year[Number(inputs.years)].term[Number(v)].scores;
+}

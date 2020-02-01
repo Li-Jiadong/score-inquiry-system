@@ -23,24 +23,26 @@
     <!--head end-->
     <!--main start-->
     <div class="container">
-        <form role="form">
+        <form id="inputs" role="form">
             <div class="form-group">
                 <label for="name">学年</label>
-                <select class="form-control">
-                    <option value="all">所有成绩</option>
-                    <option value="1">2019-2020</option>
-                    <option value="2">2018-2019</option>
-                    <option value="3">2017-2018</option>
-                    <option value="4">2016-2017</option>
-                    <option value="5">2015-2016</option>
-                    <option value="6">2014-2015</option>
-                    <option value="7">2013-2014</option>
+                <select v-model="years" class="form-control">
+                    <option value="-1">所有成绩</option>
+                    <option value="0">2019-2020</option>
+                    <option value="1">2018-2019</option>
+                    <option value="2">2017-2018</option>
+                    <option value="3">2016-2017</option>
+                    <option value="4">2015-2016</option>
+                    <option value="5">2014-2015</option>
+                    <option value="6">2013-2014</option>
                 </select>
-                <label for="name">学期</label>
-                <select class="form-control">
-                    <option value="1">第一学期</option>
-                    <option value="2">第二学期</option>
+                <div id="term">
+                    <label for="name">学期</label>
+                    <select v-model="terms" class="form-control">
+                    <option value="0">第一学期</option>
+                    <option value="1">第二学期</option>
                 </select>
+                </div>
             </div>
         </form>
         <div id="scoredata" class="col-xs-12 col-sm-12 col-md-12 main_data">
@@ -66,6 +68,7 @@
     </div>
     <!--main end-->
     <!--tail start-->
+    <div id="test"></div>
     <!--tail end-->
     <script>
         var a='hello world';
@@ -73,10 +76,21 @@
             el: '#scoredata',
             data:{
                 hhh:'adaf',
-                scores:[
-                    
-                ]
+                scores:[]
             }
+        });
+        var inputs=new Vue({
+            el:'#inputs',
+            data:{
+                years:'0',
+                terms:'0'
+            }
+        });
+        inputs.$watch('years',function(newv,oldv){
+            changeYears(newv);
+        });
+        inputs.$watch('terms',function(newv,oldv){
+            changeTerms(newv);
         });
     </script>
     <script src="js/control.js"></script>

@@ -26,7 +26,7 @@
         <form id="inputs" role="form">
             <div class="form-group">
                 <label for="name">学年</label>
-                <select v-model="years" class="form-control">
+                <select v-model="years" class="form-control" onchange="resetli()">
                     <option value="-1">所有成绩</option>
                     <option value="0">2019-2020</option>
                     <option value="1">2018-2019</option>
@@ -38,7 +38,7 @@
                 </select>
                 <div id="term">
                     <label for="name">学期</label>
-                    <select v-model="terms" class="form-control">
+                    <select v-model="terms" class="form-control" onchange="resetli()">
                     <option value="0">第一学期</option>
                     <option value="1">第二学期</option>
                 </select>

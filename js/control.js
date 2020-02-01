@@ -59,3 +59,10 @@ function changeYears(v){
 function changeTerms(v){
     scoredata.scores=datajson.year[Number(inputs.years)].term[Number(v)].scores;
 }
+
+function resetli(){
+    var lilist=document.getElementById('scoredata').getElementsByTagName("li");
+    for(var i=1;i<lilist.length;++i){
+        lilist[i].getElementsByTagName("div")[1].style.height='0px';
+    }
+}

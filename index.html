@@ -6,10 +6,12 @@
     <title>成绩查询</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/vant.index.css">
     
     <script src="js/jquery.min.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/vant.min.js"></script>
     
 </head>
 <body>
@@ -23,7 +25,7 @@
     <!--head end-->
     <!--main start-->
     <div class="container">
-        <form id="inputs" role="form">
+      <!--  <form id="inputs" role="form">
             <div class="form-group">
                 <label for="name">学年</label>
                 <select v-model="years" class="form-control" onchange="resetli()">
@@ -44,8 +46,12 @@
                 </select>
                 </div>
             </div>
-        </form>
-        <div id="scoredata" class="col-xs-12 col-sm-12 col-md-12 main_data">
+        </form>-->
+        <van-dropdown-menu  id="inputs" class="col-xs-12 col-sm-12 col-md-12">
+            <van-dropdown-item v-model="years" :options="op1"></van-dropdown-item>
+            <van-dropdown-item id="term" v-model="terms" :disabled="disabledterm" :options="op2"></van-dropdown-item>
+        </van-dropdown-menu>
+        <!--<div id="scoredata" class="col-xs-12 col-sm-12 col-md-12 main_data">
             <li></li>
             <li v-for="score in scores">
                 <div class="main_data_head" onclick="showdata(this)">
@@ -64,26 +70,72 @@
                     <p>最终成绩:{{score.finalScore}}</p>
                 </div>
             </li>
-        </div>
+        </div>-->
+        <van-cell-group id="scoredata" class="col-xs-12 col-sm-12 col-md-12">
+            <van-pull-refresh v-model="isLoading" @refresh="reget" style="overflow: visible;">
+            <li  v-for="score in scores">
+                <van-cell class="main_data_head_c" onclick="showdata(this)" :title="score.name" :label="'学分:'+score.credit+',成绩:'+score.finalScore+',绩点:'+score.GPA"  >
+                </van-cell>
+                <div class="main_data_head_c_le" style="height: 0px;overflow: hidden;">
+                    <p>学年学期:{{score.date}}</p>
+                    <p>课程代码:{{score.code}}</p>
+                    <p>课程序号:{{score.id}}</p>
+                    <p>课程类别:{{score.type}}</p>
+                    <p>期末成绩:{{score.testScore}}</p>
+                    <p>平时成绩:{{score.usualScore}}</p>
+                    <p>总评成绩:{{score.overallScore}}</p>
+                    <p>实验成绩:{{score.experimentScore}}</p>
+                    <p>最终成绩:{{score.finalScore}}</p>
+                </div>
+            </li>
+            </van-pull-refresh>
+        </van-cell-group>        
     </div>
     <!--main end-->
     <!--tail start-->
     <div id="test"></div>
     <!--tail end-->
     <script>
+        //import { Toast } from 'vant';
         var a='hello world';
         var scoredata=new Vue({
             el: '#scoredata',
             data:{
                 hhh:'adaf',
-                scores:[]
+                scores:[],
+                isLoading:false
+            },
+            methods:{
+                reget(){
+                    
+                    //Toast('刷新成功');
+                    getjson();
+                    
+                    this.isLoading=false;
+                }
             }
         });
         var inputs=new Vue({
             el:'#inputs',
             data:{
                 years:'0',
-                terms:'0'
+                terms:'0',
+                disabledterm:false,
+                op1:[
+                { text: '所有成绩', value: '-1' },
+                { text: '2019-2020', value: '0' },
+                { text: '2018-2019', value: '1' },
+                { text: '2017-2018', value: '2' },
+                { text: '2016-2017', value: '3' },
+                { text: '2015-2016', value: '4' },
+                { text: '2014-2015', value: '5' },
+                { text: '2013-2014', value: '6' }
+                ],
+                op2:[
+                { text: '所有学期', value: '-1' },
+                { text: '第一学期', value: '0' },
+                { text: '第二学期', value: '1' }
+                ]
             }
         });
         inputs.$watch('years',function(newv,oldv){

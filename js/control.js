@@ -40,11 +40,14 @@ xmlhttp.onreadystatechange=function(){
     }
 }
 xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',true);
+//xmlhttp.open("GET",'http://localhost:8888/serverTest/cstext.json',true);
 xmlhttp.send();
 
 function changeYears(v){
     if(v==-1) {
-        document.getElementById('term').style.display='none';
+        //document.getElementById('term').style.display='none';
+        inputs.terms='-1';
+        inputs.disabledterm=true;
         scoredata.scores=datajson.year[0].term[0].scores;
         for(var i=1;i<7;++i){
             for(var j=1;j<2;++j){
@@ -52,11 +55,21 @@ function changeYears(v){
             }
         }
     }else{
-        document.getElementById('term').style.display='block';
+        //document.getElementById('term').style.display='block';
+        inputs.terms='0';
+        inputs.disabledterm=false;
         scoredata.scores=datajson.year[Number(v)].term[Number(inputs.terms)].scores;
     }
 }
 function changeTerms(v){
+    if(v==-1) {
+        if(!inputs.disabledterm){
+            scoredata.scores=datajson.year[Number(inputs.years)].term[0].scores;
+            scoredata.scores=scoredata.scores.concat(datajson.year[Number(inputs.years)].term[1].scores);
+        }
+        
+    }
+    else
     scoredata.scores=datajson.year[Number(inputs.years)].term[Number(v)].scores;
 }
 
@@ -64,5 +77,17 @@ function resetli(){
     var lilist=document.getElementById('scoredata').getElementsByTagName("li");
     for(var i=1;i<lilist.length;++i){
         lilist[i].getElementsByTagName("div")[1].style.height='0px';
+        lilist[i].getElementsByTagName("div")[1].style.backgroundImage='url(./image/back.png)';
     }
+}
+function getjson(){
+    try {
+        //xmlhttp.open("GET",'http://localhost:8888/serverTest/cstext.json',false);
+        xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',false);
+        xmlhttp.send();
+        vant.Toast('刷新成功');
+    } catch (error) {
+        vant.Toast('刷新失败');
+    }
+    
 }

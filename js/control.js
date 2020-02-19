@@ -1,4 +1,4 @@
-var timer;
+﻿var timer;
 var datajson;
 function showdata(item){
     //document.getElementById('').style.backgroundImage=
@@ -39,7 +39,8 @@ xmlhttp.onreadystatechange=function(){
         scoredata.scores=datajson.year[0].term[0].scores;
     }
 }
-xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',true);
+xmlhttp.open("GET",'./cstext.json',false);
+//xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',true);
 //xmlhttp.open("GET",'http://localhost:8888/serverTest/cstext.json',true);
 xmlhttp.send();
 
@@ -83,7 +84,8 @@ function resetli(){
 function getjson(){
     try {
         //xmlhttp.open("GET",'http://localhost:8888/serverTest/cstext.json',false);
-        xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',false);
+        xmlhttp.open("GET",'./cstext.json',false);
+        //xmlhttp.open("GET",'https://www.easy-mock.com/mock/5e33f0970840101ffbc0a94b/scores/',false);
         xmlhttp.send();
         vant.Toast('刷新成功');
     } catch (error) {
